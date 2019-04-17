@@ -1,1 +1,33 @@
-<button>Exibir Lista</button>
+<div class="container">
+    <div class="row">
+        <form id="novaTarefaForm">
+                <div class="form-group">
+                    <label for="titulo">Titulo</label>
+                    <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)] = "tituloTarefa" />
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea class="form-control" id="descricao" name="descricao" rows="3" [(ngModel)] = "descricaoTarefa"></textarea>
+                </div>
+                <button (click)='adicionarTarefa()'>Adicionar</button>
+        </form>
+    </div>
+
+    <div class="row">
+        <form *ngFor="let tarefa of tarefas">
+            <div class="form-group">
+                <label for="{{tarefa.id}}feito">Feito</label>
+                <input type="checkbox" id="{{tarefa.id}}feito" [checked]="tarefa.concluida" (change)="alterarConcluida($event.target.checked ,tarefa)"/>
+            </div>
+            <div class="form-group">
+                <label for="{{tarefa.id}}titulo">Titulo</label>
+                <input type="text" class="form-control" id="{{tarefa.id}}titulo" value="{{tarefa.titulo}}" (change)="alterarTitulo($event.target.value , tarefa)"/>
+            </div>
+            <div class="form-group">
+                <label for="{{tarefa.id}}descricao">Descrição</label>
+                <textarea class="form-control" id="{{tarefa.id}}descricao" rows="3" (change)="alterarDescricao($event.target.value ,tarefa)">{{tarefa.descricao}}</textarea>
+            </div>
+            <button (click)="apagarTarefa(tarefa.id)">Excluir</button>
+        </form>
+    </div>
+</div>
