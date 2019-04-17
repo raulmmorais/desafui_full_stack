@@ -7,7 +7,7 @@ import {Headers} from '@angular/http'
   providedIn: 'root'
 })
 export class TarefasService {
-  url: string = 'http://localhost:8080/tarefas';
+  url: string = 'http://localhost:8080/todo-list';
 
   constructor(private http: Http) { }
   

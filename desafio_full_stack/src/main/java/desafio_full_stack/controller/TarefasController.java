@@ -21,32 +21,32 @@ public class TarefasController {
 	TarefaRepository repository;
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/tarefas", method = RequestMethod.GET)
+	@RequestMapping(value = "/todo-list", method = RequestMethod.GET)
 	public List<Tarefa> listaTarefas(){
 		return repository.findAll();
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/tarefas/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/todo-list/{id}", method = RequestMethod.GET)
 	public Optional<Tarefa> obterTarefa(@PathVariable String id){
 		return repository.findById(id);
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/tarefas", method = RequestMethod.POST)
+	@RequestMapping(value = "/todo-list", method = RequestMethod.POST)
 	public Tarefa salva(@RequestBody Tarefa tarefa) {
 		System.out.println(tarefa.getTitulo());
 		return repository.save(tarefa);
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/tarefas", method = RequestMethod.PUT)
+	@RequestMapping(value = "/todo-list", method = RequestMethod.PUT)
 	public Tarefa edita (@RequestBody Tarefa tarefa) {
 		return repository.save(tarefa);
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/tarefas/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/todo-list/{id}", method = RequestMethod.DELETE)
 	public void apagarTarefa(@PathVariable String id) {
 		System.out.println(id);
 		repository.deleteById(id);
